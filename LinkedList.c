@@ -3,16 +3,6 @@
 #include <string.h>
 #include "LinkedList.h"
 
-typedef struct node{
-    struct node *next;
-    char data[];
-}NODE;
-
-typedef struct{
-    NODE *head;
-    int size;
-}LIST;
-
 /**
  * Function to create an empty linked list
  * @param l list pointer
