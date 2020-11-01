@@ -14,6 +14,15 @@ typedef struct{
 }LIST;
 
 /**
+ * Function to create an empty linked list
+ * @param l list pointer
+ */
+void createEmptyList(LIST *l){
+    l->size = 0;
+    l->head = NULL;
+}
+
+/**
  * Printing the list contents
  * @param l The List
  */
@@ -74,10 +83,29 @@ void delete(NODE **head_ref,char key[]){
 
     free(temp);
 }
-
+//Used for debugging the list
+//#ifdef DEBUG
 int main(){
+
+    //Creating a list
+    LIST *l;
+    l = (LIST *)malloc(sizeof(LIST));
+    createEmptyList(l);
+
+    //Testing the list by putting some data in. Works fine!
+
+    insert(&l->head,"ABC");
+    insert(&l->head,"Hello");
+    insert(&l->head,"Welcome");
+    insert(&l->head,"Bye");
+    insert(&l->head,"Hi");
+
+    delete(&l->head,"Bye");
+
+    printList(l);
 
     return 0;
 }
+//#endif
 
 

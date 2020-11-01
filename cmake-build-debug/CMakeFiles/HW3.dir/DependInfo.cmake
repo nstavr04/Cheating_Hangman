@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "C:/Users/nikol/Desktop/University/3rd Semester/EPL232 Programming Techniques/EPL232 HW/HW3/CheatingHangman.c" "C:/Users/nikol/Desktop/University/3rd Semester/EPL232 Programming Techniques/EPL232 HW/HW3/cmake-build-debug/CMakeFiles/HW3.dir/CheatingHangman.c.obj"
+  "C:/Users/nikol/Desktop/University/3rd Semester/EPL232 Programming Techniques/EPL232 HW/HW3/LinkedList.c" "C:/Users/nikol/Desktop/University/3rd Semester/EPL232 Programming Techniques/EPL232 HW/HW3/cmake-build-debug/CMakeFiles/HW3.dir/LinkedList.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
