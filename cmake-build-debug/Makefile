@@ -142,32 +142,32 @@ HW3/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/build
 .PHONY : HW3/fast
 
-main.obj: main.c.obj
+CheatingHangman.obj: CheatingHangman.c.obj
 
-.PHONY : main.obj
+.PHONY : CheatingHangman.obj
 
 # target to build an object file
-main.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/main.c.obj
-.PHONY : main.c.obj
+CheatingHangman.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/CheatingHangman.c.obj
+.PHONY : CheatingHangman.c.obj
 
-main.i: main.c.i
+CheatingHangman.i: CheatingHangman.c.i
 
-.PHONY : main.i
+.PHONY : CheatingHangman.i
 
 # target to preprocess a source file
-main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/main.c.i
-.PHONY : main.c.i
+CheatingHangman.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/CheatingHangman.c.i
+.PHONY : CheatingHangman.c.i
 
-main.s: main.c.s
+CheatingHangman.s: CheatingHangman.c.s
 
-.PHONY : main.s
+.PHONY : CheatingHangman.s
 
 # target to generate assembly for a file
-main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/main.c.s
-.PHONY : main.c.s
+CheatingHangman.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/CheatingHangman.c.s
+.PHONY : CheatingHangman.c.s
 
 # Help Target
 help:
@@ -178,9 +178,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... HW3
-	@echo ... main.obj
-	@echo ... main.i
-	@echo ... main.s
+	@echo ... CheatingHangman.obj
+	@echo ... CheatingHangman.i
+	@echo ... CheatingHangman.s
 .PHONY : help
 
 
