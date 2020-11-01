@@ -74,10 +74,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/nikol/Desktop/University/3rd Semester/EPL232 Programming Techniques/EPL232 HW/HW3/LinkedList.c">
-			<Option target="HW3"/>
-		</Unit>
-		<Unit filename="C:/Users/nikol/Desktop/University/3rd Semester/EPL232 Programming Techniques/EPL232 HW/HW3/LinkedList.h">
+		<Unit filename="C:/Users/nikol/Desktop/University/3rd Semester/EPL232 Programming Techniques/EPL232 HW/HW3/CheatingHangman.c">
 			<Option target="HW3"/>
 		</Unit>
 		<Unit filename="C:/Users/nikol/Desktop/University/3rd Semester/EPL232 Programming Techniques/EPL232 HW/HW3/CMakeLists.txt">

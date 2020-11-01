@@ -3,4 +3,4 @@ project(HW3 C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(HW3 LinkedList.c)
+add_executable(HW3 CheatingHangman.c)

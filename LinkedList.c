@@ -20,7 +20,7 @@ void printList(LIST *l){
     NODE *pt = l->head;
 
     while(pt != NULL){
-        printf("%s",pt->data);
+        printf("%s\n",pt->data);
         pt = pt->next;
     }
 }

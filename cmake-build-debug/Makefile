@@ -142,32 +142,32 @@ HW3/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/build
 .PHONY : HW3/fast
 
-LinkedList.obj: LinkedList.c.obj
+CheatingHangman.obj: CheatingHangman.c.obj
 
-.PHONY : LinkedList.obj
+.PHONY : CheatingHangman.obj
 
 # target to build an object file
-LinkedList.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/LinkedList.c.obj
-.PHONY : LinkedList.c.obj
+CheatingHangman.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/CheatingHangman.c.obj
+.PHONY : CheatingHangman.c.obj
 
-LinkedList.i: LinkedList.c.i
+CheatingHangman.i: CheatingHangman.c.i
 
-.PHONY : LinkedList.i
+.PHONY : CheatingHangman.i
 
 # target to preprocess a source file
-LinkedList.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/LinkedList.c.i
-.PHONY : LinkedList.c.i
+CheatingHangman.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/CheatingHangman.c.i
+.PHONY : CheatingHangman.c.i
 
-LinkedList.s: LinkedList.c.s
+CheatingHangman.s: CheatingHangman.c.s
 
-.PHONY : LinkedList.s
+.PHONY : CheatingHangman.s
 
 # target to generate assembly for a file
-LinkedList.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/LinkedList.c.s
-.PHONY : LinkedList.c.s
+CheatingHangman.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/CheatingHangman.c.s
+.PHONY : CheatingHangman.c.s
 
 # Help Target
 help:
@@ -178,9 +178,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... HW3
-	@echo ... LinkedList.obj
-	@echo ... LinkedList.i
-	@echo ... LinkedList.s
+	@echo ... CheatingHangman.obj
+	@echo ... CheatingHangman.i
+	@echo ... CheatingHangman.s
 .PHONY : help
 
 

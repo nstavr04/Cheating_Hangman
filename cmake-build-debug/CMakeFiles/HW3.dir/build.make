@@ -76,27 +76,27 @@ include CMakeFiles/HW3.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/HW3.dir/flags.make
 
-CMakeFiles/HW3.dir/LinkedList.c.obj: CMakeFiles/HW3.dir/flags.make
-CMakeFiles/HW3.dir/LinkedList.c.obj: ../LinkedList.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\nikol\Desktop\University\3rd Semester\EPL232 Programming Techniques\EPL232 HW\HW3\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/HW3.dir/LinkedList.c.obj"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\HW3.dir\LinkedList.c.obj   -c "C:\Users\nikol\Desktop\University\3rd Semester\EPL232 Programming Techniques\EPL232 HW\HW3\LinkedList.c"
+CMakeFiles/HW3.dir/CheatingHangman.c.obj: CMakeFiles/HW3.dir/flags.make
+CMakeFiles/HW3.dir/CheatingHangman.c.obj: ../CheatingHangman.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\nikol\Desktop\University\3rd Semester\EPL232 Programming Techniques\EPL232 HW\HW3\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/HW3.dir/CheatingHangman.c.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\HW3.dir\CheatingHangman.c.obj   -c "C:\Users\nikol\Desktop\University\3rd Semester\EPL232 Programming Techniques\EPL232 HW\HW3\CheatingHangman.c"
 
-CMakeFiles/HW3.dir/LinkedList.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/HW3.dir/LinkedList.c.i"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\nikol\Desktop\University\3rd Semester\EPL232 Programming Techniques\EPL232 HW\HW3\LinkedList.c" > CMakeFiles\HW3.dir\LinkedList.c.i
+CMakeFiles/HW3.dir/CheatingHangman.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/HW3.dir/CheatingHangman.c.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\nikol\Desktop\University\3rd Semester\EPL232 Programming Techniques\EPL232 HW\HW3\CheatingHangman.c" > CMakeFiles\HW3.dir\CheatingHangman.c.i
 
-CMakeFiles/HW3.dir/LinkedList.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/HW3.dir/LinkedList.c.s"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\nikol\Desktop\University\3rd Semester\EPL232 Programming Techniques\EPL232 HW\HW3\LinkedList.c" -o CMakeFiles\HW3.dir\LinkedList.c.s
+CMakeFiles/HW3.dir/CheatingHangman.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/HW3.dir/CheatingHangman.c.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\nikol\Desktop\University\3rd Semester\EPL232 Programming Techniques\EPL232 HW\HW3\CheatingHangman.c" -o CMakeFiles\HW3.dir\CheatingHangman.c.s
 
 # Object files for target HW3
 HW3_OBJECTS = \
-"CMakeFiles/HW3.dir/LinkedList.c.obj"
+"CMakeFiles/HW3.dir/CheatingHangman.c.obj"
 
 # External object files for target HW3
 HW3_EXTERNAL_OBJECTS =
 
-HW3.exe: CMakeFiles/HW3.dir/LinkedList.c.obj
+HW3.exe: CMakeFiles/HW3.dir/CheatingHangman.c.obj
 HW3.exe: CMakeFiles/HW3.dir/build.make
 HW3.exe: CMakeFiles/HW3.dir/linklibs.rsp
 HW3.exe: CMakeFiles/HW3.dir/objects1.rsp
