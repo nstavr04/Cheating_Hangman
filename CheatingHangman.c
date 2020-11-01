@@ -47,6 +47,8 @@ int giveGuessTries(){
         secondTry = 1;
     } while(totalGuesses <= 0);
 
+    printf("\n-------------------------------\n");
+
     return totalGuesses;
 
 }
@@ -74,6 +76,41 @@ int getWordLength(char *arg){
 
 }
 
+/**
+ * The function checks if the letter given was already given or not
+ * and prints the appropriate message
+ * @param arr the array of the alphabet
+ * @param letter the letter given
+ */
+int checkLetterGiven(int arr[],char letter){
+
+    //Making sure all letters are lowercase
+    if(letter>=65 && letter<=90){
+        letter = letter + 32;
+    }
+
+    //Increase the appropriate array slot for each letter
+    for(char i='a';i<='z';i++){
+        if(i==letter && arr[i-97] == 1){
+            printf("Letter %c was given before",letter);
+            return 0;
+        }
+        if(i==letter && arr[i-97] != 0){
+            arr[i-97]++;
+            return 1;
+        }
+    }
+    return 0;
+
+
+}
+
+/**
+ * The main function that does the function calling
+ * @param argc
+ * @param argv
+ * @return
+ */
 int main(int argc,char *argv[]) {
 
     //Intro Message
@@ -81,8 +118,6 @@ int main(int argc,char *argv[]) {
 
     //Give the number of guesses
     int totalGuesses = giveGuessTries();
-
-    printf("%d\n",totalGuesses);
 
     //Gets the word length from the file
     if(argc != 2){
@@ -99,12 +134,28 @@ int main(int argc,char *argv[]) {
     }
     wordProgress[wordl] = '\0';
 
-    printf("%s",wordProgress);
+    //Testing
+    int gameEnd = 0;
 
-    while(1==1){
+    //Main loop of the hangman game
+    while(gameEnd!=1){
 
+    printf("Progress: %s\n",wordProgress);
+    printf("Number of Guesses: %d\n",totalGuesses);
 
+    //An array used to keep track which letters the player has said so far
+    int alphabetArray[26] = {};
+    printf("Guess a letter: ");
+    char letter;
+    //Need to do the appropriate checkings
+    //This one takes the enter character
+    scanf("%c",&letter);
+    scanf("%c",&letter);
 
+    checkLetterGiven(alphabetArray,letter);
+
+    printf("\n\n-------------------------------\n");
+    gameEnd = 1;
     }
 
     return 0;
