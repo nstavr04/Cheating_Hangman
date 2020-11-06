@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include<assert.h>
+#include <math.h>
 
 typedef struct{
     int size;
@@ -63,10 +65,9 @@ HASHTABLE *ReadFromArray(char **array,int wordLength,char userLetter,int arraySi
  * @param ht  the hash table
  * @param wordLength the size of the largest list
  * @param maxListSize the size of the largest list
- * @param guessedLetter the guess letter
  * @return a pointer to the largest list in the hash table
  */
-LIST *findMaxList(HASHTABLE *ht,int wordLength,int *maxListSize,int *guessedLetter);
+LIST *findMaxList(HASHTABLE *ht,int wordLength,int *maxListSize);
 
 /**
  * A function that saves the List that has the largest size into an array

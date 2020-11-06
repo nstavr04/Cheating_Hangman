@@ -1,5 +1,9 @@
 #ifndef HW3_LINKEDLIST_H
 #define HW3_LINKEDLIST_H
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 
 typedef struct node{
     struct node *next;
@@ -22,6 +26,14 @@ void createEmptyList(LIST *l);
  * @param l The List
  */
 void printList(LIST *l);
+
+/**
+ * Function used to pass the list pointer so we can increment
+ * the size as well
+ * @param l the list pointer
+ * @param data the data
+ */
+void insert_list(LIST *l,char *data);
 
 /**
  * Inserting a new node as the start of the linked list

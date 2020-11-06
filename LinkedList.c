@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "LinkedList.h"
 
 /**
@@ -26,12 +23,33 @@ void printList(LIST *l){
 }
 
 /**
+ * Function used to pass the list pointer so we can increment
+ * the size as well
+ * @param l the list pointer
+ * @param data the data
+ */
+void insert_list(LIST *l,char *data){
+    insert(&l->head,data);
+    l->size++;
+}
+
+/**
  * Inserting a new node as the start of the linked list
  * @param head_ref head
  * @param new_data the data to be added
  */
 void insert(NODE** head_ref, char new_data[]){
-    NODE* new_node = (NODE*)malloc(sizeof(NODE));
+    //NODE* new_node = (NODE*)malloc(sizeof(NODE));
+
+    //Allocate the appropriate memory
+    NODE* new_node = (NODE*)malloc(sizeof(*new_node) + strlen(new_data) + 1);
+
+//    new_node->data = malloc(sizeof(char)*strlen(new_data)+1);
+
+    if(new_node == NULL){
+        printf("Unable to allocate memory");
+         exit(-1);
+    }
 
     //New node data is equal to the new data
     strcpy(new_node->data,new_data);
@@ -97,5 +115,3 @@ void delete(NODE **head_ref,char key[]){
 //    return 0;
 //}
 //#endif
-
-

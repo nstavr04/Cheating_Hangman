@@ -1,7 +1,5 @@
 #include "HashTable.h"
-#include "LinkedList.h"
-#include<assert.h>
-#include <math.h>
+
 
 /**
  * If we have a positive size , we allocate the memory for a new hashtable.
@@ -20,21 +18,29 @@ HASHTABLE *createHt(int size){
     //Allocating memory for the hash table
     ht = malloc(sizeof(HASHTABLE));
     if(ht == NULL){
-        return NULL;
+        printf("Unable to allocate memory");
+        exit(-1);
     }
 
     //Allocating memory for the list pointers
     ht->slot = (LIST **)malloc(size*sizeof(LIST *));
     if(ht->slot == NULL){
-        return NULL;
+        printf("Unable to allocate memory");
+        exit(-1);
     }
 
     //Allocating memory for lists
     for(int i=0;i<size;i++){
-        ht->slot[i] = malloc(sizeof(*ht->slot[i]));
-    }
 
-    memset(ht->slot,0,size*sizeof(LIST *));
+        ht->slot[i] = malloc(sizeof(*ht->slot[i]));
+        if(ht->slot[i] == NULL){
+            printf("Unable to allocate memory");
+            exit(-1);
+        }
+        //Initializing all lists
+        createEmptyList(ht->slot[i]);
+
+    }
 
     ht->size = size;
 
@@ -55,7 +61,7 @@ void hashPlace(HASHTABLE *ht,int index,char word[]){
     LIST *l = ht->slot[index];
 
     //Insert the word in the correct list
-    insert(&l->head, word);
+    insert_list(l,word);
 
 }
 
@@ -77,7 +83,7 @@ void hashFunction(HASHTABLE *ht,char word[],char userLetter){
 
     for (unsigned i = 0; i < strlen(word); ++i) {
         if (word[i] == userLetter) {
-            id |= 1U << i;
+            id |= 1U << (i % (sizeof(unsigned)*8));
         }
     }
 
@@ -153,10 +159,9 @@ HASHTABLE *ReadFromArray(char **array,int wordLength,char userLetter,int arraySi
  * @param ht  the hash table
  * @param wordLength the size of the largest list
  * @param maxListSize the size of the largest list
- * @param guessedLetter the guess letter
  * @return a pointer to the largest list in the hash table
  */
-LIST *findMaxList(HASHTABLE *ht,int wordLength,int *maxListSize,int *guessedLetter){
+LIST *findMaxList(HASHTABLE *ht,int wordLength,int *maxListSize){
 
     int max = 0;
 
@@ -169,25 +174,13 @@ LIST *findMaxList(HASHTABLE *ht,int wordLength,int *maxListSize,int *guessedLett
     for(int i=0;i<pow(2,wordLength);i++){
 
         //Checks if the size of the list is the largest
-        if(p->slot[i]->size >= max){
+        if((p->slot[i])->size > max){
             //Change the max size of list
             max = p->slot[i]->size;
             //Point l to that list
             l = p->slot[i];
         }
 
-        //Move to the next hash table slot
-        (p->slot)++;
-
-    }
-
-    //If the list is the first letter, it means the user didnt guess a letter
-    if(l == ht->slot[0]){
-        *guessedLetter = 0;
-    }
-    //Else it guessed the letter correctly
-    else{
-        *guessedLetter = 1;
     }
 
     //Change the max size to return it to the main
@@ -221,7 +214,8 @@ char ** saveListToArray(LIST *l,int arraySize){
             //Allocate the memory and return the pointer to that memory
             array[i] = strdup(pt->data);
             //Making sure the memory allocation happened and its not NULL
-            assert(array[i]);
+//            //Used only for debugging
+//            assert(array[i]);
             pt = pt->next;
         }
 
@@ -236,27 +230,31 @@ char ** saveListToArray(LIST *l,int arraySize){
 void deletePreviousHash(HASHTABLE *ht){
 
     //For every hash slot, take the list pointer
-    for(int i=0;i<ht->size-1;i++){
+    for(int i=0;i<ht->size;i++){
 
         LIST *l = ht->slot[i];
 
         //For every list go through all nodes
-        NODE *n = l->head;
-        for(int j=0;j<l->size;j++){
+        NODE *temp = l->head;
 
-            //Free current node
-            NODE *temp = n;
+        while(temp != NULL){
+
+            //Change our head
+            l->head = temp->next;
+            //Free the previous head
             free(temp);
+            //Temp is equal to new head
+            temp = l->head;
 
-            //Move to the next node
-            n = n->next;
         }
 
         //Free current list
-        LIST *ltemp = l;
-        free(ltemp);
+        free(l);
 
     }
+
+    //Free the hash table pointers
+    free(ht->slot);
 
     //Free the hash table
     free(ht);

@@ -164,6 +164,51 @@ char CheckLetter() {
 }
 
 /**
+ * The function checks if the letter is in the word
+ * @param array one of the current words
+ * @param letter the current user letter
+ * @return 1 if its in the word , 0 if not
+ */
+int letterGuessed(char array[],char letter){
+
+    int i=0;
+
+    while(array[i] != '\0'){
+
+        //Check if the letter is in the word
+        if(array[i] == letter){
+            return 1;
+        }
+
+        i++;
+    }
+
+    return 0;
+
+}
+
+/**
+ * The function checks if we finished the word
+ * @param secretWord the secret word
+ * @return 1 if we completed it , 0 if not
+ */
+int wordCompleted(char secretWord[]){
+
+    int i = 0 ;
+
+    while(secretWord[i] != '\0'){
+        //If there are blank letters , word is incomplete
+        if(secretWord[i] == '_'){
+            return 0;
+        }
+        i++;
+    }
+
+    return 1;
+
+}
+
+/**
  * The main function that does the function calling
  * @param argc
  * @param argv
@@ -203,6 +248,16 @@ int main(int argc, char *argv[]) {
     //Initialized all with 0, when value becomes 1 it means we picked that letter
     char alphabetArray[26] = {0};
 
+    //Size of the array. We need to save it the 1st time so we wont lose it from the file that we read because max
+    //list size is getting reinitialized to 0 every time
+    int arraySize = 0;
+
+    //Making sure i read arraySize only the first time. The other times i will use maxListSize
+    int arraySizeOnce = 1;
+
+    //Create the char array pointer
+    char **array = NULL;
+
     //Main loop of the hangman game
     while (gameEnd != 1) {
 
@@ -233,13 +288,10 @@ int main(int argc, char *argv[]) {
         //Create the hash table pointer
         HASHTABLE *ht = NULL;
 
-        //Create the char array pointer
-        char **array = NULL;
-
-        //Create an int that indicates every time if the user has guessed a new letter or not
-        int guessedLetter = 0;
-
         //The creation of the hash table every time
+
+        //Checking if user guessed the letter . If 1 ,he did
+        int guessedLetter = 0;
 
         //Read from file only the first time
         if (firstRead) {
@@ -249,10 +301,19 @@ int main(int argc, char *argv[]) {
             ht = ReadFile(argv[1], wordl, letter);
 
             //Finds the max list and returns a pointer to it and also calculates the max list size
-            maxlist = findMaxList(ht, wordl, &maxListSize, &guessedLetter);
+            maxlist = findMaxList(ht, wordl, &maxListSize);
 
             //Saves the contents of the list to the array and returns a pointer pointing to that array
             array = saveListToArray(maxlist, maxListSize);
+
+            //Setting arraySize to use in else in the next loop
+            arraySize = maxListSize;
+
+            //If the first word in my max list that is saved in the array is not equal to the first word
+            //on the first list of the hash table it means user guessed a letter correctly
+            if(strcmp(array[0],ht->slot[0]->head->data) != 0){
+                guessedLetter =  1;
+            }
 
             //Delete from memory the whole hash table
             deletePreviousHash(ht);
@@ -263,13 +324,19 @@ int main(int argc, char *argv[]) {
         else {
 
             //Read the array, create the hash table and return a pointer pointing to it
-            ht = ReadFromArray(array, wordl, letter, maxListSize);
+            ht = ReadFromArray(array, wordl, letter, arraySize);
 
             //Finds the max list and returns a pointer to it and also calculates the max list size
-            maxlist = findMaxList(ht, wordl, &maxListSize, &guessedLetter);
+            maxlist = findMaxList(ht, wordl, &arraySize);
 
             //Saves the contents of the list to the array and returns a pointer pointing to that array
-            array = saveListToArray(maxlist, maxListSize);
+            array = saveListToArray(maxlist, arraySize);
+
+            //If the first word in my max list that is saved in the array is not equal to the first word
+            //on the first list of the hash table it means user guessed a letter correctly
+            if(letterGuessed(array[0],letter)){
+                guessedLetter =  1;
+            }
 
             //Delete from memory the whole hash table
             deletePreviousHash(ht);
@@ -277,7 +344,6 @@ int main(int argc, char *argv[]) {
         }
 
         //Conditions to end the game
-
 
         //Print message if user guessed a letter
         if (guessedLetter) {
@@ -302,15 +368,27 @@ int main(int argc, char *argv[]) {
 
             //Print message that user guessed a letter
             printf("You guessed a letter correctly");
+            printf("\n\n-------------------------------\n");
+
+            //Make sure to make guessLetter 0 again
+            guessedLetter = 0;
         }
             //Print message if user didn't guess a letter
         else {
             //Decreasing every time the guess was wrong
             totalGuesses--;
             printf("%c not in secret word", letter);
+            printf("\n\n-------------------------------\n");
         }
 
-        printf("\n\n-------------------------------\n");
+        //Finding the word and winning the game
+        if (wordCompleted(wordProgress)) {
+            gameEnd = 1;
+            printf("**************************************************\n");
+            printf("Congratulations, you win the game\n");
+            printf("The secret word is: %s\n", array[0]);
+            printf("**************************************************");
+        }
 
         //Running out of tries
         if (totalGuesses == 0) {
@@ -323,14 +401,6 @@ int main(int argc, char *argv[]) {
 
         }
 
-        //Finding the word and winning the game
-        if (maxListSize == 1) {
-            gameEnd = 1;
-            printf("**************************************************\n");
-            printf("Congratulations, you win the game\n");
-            printf("The secret word is: %s", array[0]);
-            printf("**************************************************");
-        }
     }
 
 return 0;
