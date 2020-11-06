@@ -80,10 +80,15 @@ int getWordLength(char *arg){
  * and prints the appropriate message
  * @param arr the array of the alphabet
  * @param letter the letter given
+ * @param upperCase If our words are upperCase or not
  */
-int checkLetterGiven(char arr[],char letter){
+int checkLetterGiven(char arr[],char letter,int upperCase){
 
-    return (arr[letter - 'a']++) != 0;
+    if(upperCase)
+        return (arr[letter - 'A']++) != 0;
+
+    else
+        return (arr[letter - 'a']++) != 0;
 
 }
 
@@ -92,8 +97,9 @@ int checkLetterGiven(char arr[],char letter){
  * the same case. If not it makes the user letter match the text file case
  * @param arg the file parameter
  * @letter the letter that the user gave
+ * @return Returns 1 if all letters will be upper case , 0 if all lower case
  */
-void CheckLetterCaps(char *arg,char *letter){
+int CheckLetterCaps(char *arg,char *letter){
 
     //Read the text file
     FILE *fp = NULL;
@@ -120,13 +126,17 @@ void CheckLetterCaps(char *arg,char *letter){
         if(*letter>= 97){
             *letter = *letter - 32;
         }
+        return 1;
     }
     //If words are lower case make user letter lower case
     else if(letterSample >= 97){
         if(*letter<=90){
             *letter = *letter + 32;
         }
+        return 0;
     }
+
+    return 0;
 
 }
 
@@ -144,7 +154,7 @@ char CheckLetter(){
     scanf(" %c",&letter);
 
     //While the letter is not a valid letter
-    while(!(letter>=65 && letter<=90) || !(letter>=97 && letter<=122) ){
+    while(!((letter>=65 && letter<=90) || (letter>=97 && letter<=122)) ){
         printf("That is not a letter. Please give a letter: ");
         scanf(" %c",&letter);
     }
@@ -205,10 +215,10 @@ int main(int argc,char *argv[]) {
     letter = CheckLetter();
 
     //Change the case of the letter if needed to match the text file
-    CheckLetterCaps(argv[1],&letter);
+    int UpperCase = CheckLetterCaps(argv[1],&letter);
 
     //If user gave the letter before, print an error message and let him put a new letter
-    if(checkLetterGiven(alphabetArray,letter)){
+    if(checkLetterGiven(alphabetArray,letter,UpperCase)){
         printf("Letter %c was given before\n",letter);
         printf("\n-------------------------------\n");
         continue;

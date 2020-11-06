@@ -258,10 +258,10 @@ void deletePreviousHash(HASHTABLE *ht){
 
 //Used for debugging the HashTable
 //#ifdef DEBUG
-int main(){
-
-
-
-    return 0;
-}
+//int main(){
+//
+//
+//
+//    return 0;
+//}
 //#endif

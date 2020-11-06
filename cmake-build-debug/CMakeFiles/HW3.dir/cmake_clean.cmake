@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/HW3.dir/CheatingHangman.c.obj"
+  "CMakeFiles/HW3.dir/HashTable.c.obj"
+  "CMakeFiles/HW3.dir/LinkedList.c.obj"
   "HW3.exe"
   "HW3.exe.manifest"
   "HW3.pdb"

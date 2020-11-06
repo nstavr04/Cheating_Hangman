@@ -169,6 +169,60 @@ CheatingHangman.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/CheatingHangman.c.s
 .PHONY : CheatingHangman.c.s
 
+HashTable.obj: HashTable.c.obj
+
+.PHONY : HashTable.obj
+
+# target to build an object file
+HashTable.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/HashTable.c.obj
+.PHONY : HashTable.c.obj
+
+HashTable.i: HashTable.c.i
+
+.PHONY : HashTable.i
+
+# target to preprocess a source file
+HashTable.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/HashTable.c.i
+.PHONY : HashTable.c.i
+
+HashTable.s: HashTable.c.s
+
+.PHONY : HashTable.s
+
+# target to generate assembly for a file
+HashTable.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/HashTable.c.s
+.PHONY : HashTable.c.s
+
+LinkedList.obj: LinkedList.c.obj
+
+.PHONY : LinkedList.obj
+
+# target to build an object file
+LinkedList.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/LinkedList.c.obj
+.PHONY : LinkedList.c.obj
+
+LinkedList.i: LinkedList.c.i
+
+.PHONY : LinkedList.i
+
+# target to preprocess a source file
+LinkedList.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/LinkedList.c.i
+.PHONY : LinkedList.c.i
+
+LinkedList.s: LinkedList.c.s
+
+.PHONY : LinkedList.s
+
+# target to generate assembly for a file
+LinkedList.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/LinkedList.c.s
+.PHONY : LinkedList.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -181,6 +235,12 @@ help:
 	@echo ... CheatingHangman.obj
 	@echo ... CheatingHangman.i
 	@echo ... CheatingHangman.s
+	@echo ... HashTable.obj
+	@echo ... HashTable.i
+	@echo ... HashTable.s
+	@echo ... LinkedList.obj
+	@echo ... LinkedList.i
+	@echo ... LinkedList.s
 .PHONY : help
 
 

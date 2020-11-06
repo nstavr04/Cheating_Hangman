@@ -75,27 +75,27 @@ void delete(NODE **head_ref,char key[]){
 }
 //Used for debugging the list
 //#ifdef DEBUG
-int main(){
-
-    //Creating a list
-    LIST *l;
-    l = (LIST *)malloc(sizeof(LIST));
-    createEmptyList(l);
-
-    //Testing the list by putting some data in. Works fine!
-
-    insert(&l->head,"ABC");
-    insert(&l->head,"Hello");
-    insert(&l->head,"Welcome");
-    insert(&l->head,"Bye");
-    insert(&l->head,"Hi");
-
-    delete(&l->head,"Bye");
-
-    printList(l);
-
-    return 0;
-}
+//int main(){
+//
+//    //Creating a list
+//    LIST *l;
+//    l = (LIST *)malloc(sizeof(LIST));
+//    createEmptyList(l);
+//
+//    //Testing the list by putting some data in. Works fine!
+//
+//    insert(&l->head,"ABC");
+//    insert(&l->head,"Hello");
+//    insert(&l->head,"Welcome");
+//    insert(&l->head,"Bye");
+//    insert(&l->head,"Hi");
+//
+//    delete(&l->head,"Bye");
+//
+//    printList(l);
+//
+//    return 0;
+//}
 //#endif
 
 

@@ -77,6 +77,18 @@
 		<Unit filename="C:/Users/nikol/Desktop/University/3rd Semester/EPL232 Programming Techniques/EPL232 HW/HW3/CheatingHangman.c">
 			<Option target="HW3"/>
 		</Unit>
+		<Unit filename="C:/Users/nikol/Desktop/University/3rd Semester/EPL232 Programming Techniques/EPL232 HW/HW3/HashTable.c">
+			<Option target="HW3"/>
+		</Unit>
+		<Unit filename="C:/Users/nikol/Desktop/University/3rd Semester/EPL232 Programming Techniques/EPL232 HW/HW3/HashTable.h">
+			<Option target="HW3"/>
+		</Unit>
+		<Unit filename="C:/Users/nikol/Desktop/University/3rd Semester/EPL232 Programming Techniques/EPL232 HW/HW3/LinkedList.c">
+			<Option target="HW3"/>
+		</Unit>
+		<Unit filename="C:/Users/nikol/Desktop/University/3rd Semester/EPL232 Programming Techniques/EPL232 HW/HW3/LinkedList.h">
+			<Option target="HW3"/>
+		</Unit>
 		<Unit filename="C:/Users/nikol/Desktop/University/3rd Semester/EPL232 Programming Techniques/EPL232 HW/HW3/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
