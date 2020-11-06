@@ -1,3 +1,14 @@
+/**
+* @file HashTable.c
+* @brief The class that implements most of the function used in the hangman game
+*
+* The class keeps track of the words by storing them every time in a hashtable of pointers
+* pointing to lists that have the words stored
+*
+* @author nstavr04
+* @bug No known bugs.
+*/
+
 #include "HashTable.h"
 #include <math.h>
 

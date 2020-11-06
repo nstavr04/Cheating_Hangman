@@ -1,3 +1,14 @@
+/**
+* @file LinkedList.c
+* @brief The class that implements a Linked List
+*
+* The class has the basic functions for inserting , deleting data from the list
+* as well as creating the list or iterate through it
+*
+* @author nstavr04
+* @bug No known bugs.
+*/
+
 #include "LinkedList.h"
 
 /**

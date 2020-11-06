@@ -1,3 +1,16 @@
+/**
+* @file CheatingHangman.c
+* @brief Main class for the cheating hangman game
+*
+* The program plays hangman with the user with words from a text file.
+* The computer is hashing the words every time in groups according to the
+* letter given by the user, trying to stall his winning thus making the
+* player less likely to win
+*
+* @author nstavr04
+* @bug No known bugs.
+*/
+
 #include <stdio.h>
 #include <string.h>
 #include<stdlib.h>
