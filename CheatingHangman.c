@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include <string.h>
 #include<stdlib.h>
+#include <ctype.h>
 #include "HashTable.h"
 
 /**
@@ -167,9 +168,9 @@ char CheckLetter() {
     scanf(" %c", &letter);
 
     //While the letter is not a valid letter
-    while (!((letter >= 65 && letter <= 90) || (letter >= 97 && letter <= 122))) {
+    while (!((letter >= 'A' && letter <= 'Z') || (letter >= 'a' && letter <= 'z'))) {
         printf("That is not a letter. Please give a letter: ");
-        fflush(stdout);
+        fflush(stdin);
         scanf(" %c", &letter);
     }
 
