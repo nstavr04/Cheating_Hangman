@@ -1,6 +1,5 @@
 #include "HashTable.h"
 
-
 /**
  * If we have a positive size , we allocate the memory for a new hashtable.
  * @param size The size of HashTable
@@ -117,10 +116,8 @@ HASHTABLE *ReadFile(char *arg,int wordLength,char userLetter){
      //Just overwriting the wordLength so we read it from the file
      fscanf(fp,"%d",&wordLength);
 
-     //While i have more lines to read
      while(fscanf(fp,"%s",word) == 1){
 
-         //Every time i read a word i call hashFunction
          hashFunction(ht,word,userLetter);
 
      }
@@ -140,7 +137,6 @@ HASHTABLE *ReadFile(char *arg,int wordLength,char userLetter){
   */
 HASHTABLE *ReadFromArray(char **array,int wordLength,char userLetter,int arraySize){
 
-    //Creatomg the hash table
     HASHTABLE *ht = createHt(pow(2,wordLength));
 
     //For every word call the hashFunction
@@ -214,8 +210,6 @@ char ** saveListToArray(LIST *l,int arraySize){
             //Allocate the memory and return the pointer to that memory
             array[i] = strdup(pt->data);
             //Making sure the memory allocation happened and its not NULL
-//            //Used only for debugging
-//            assert(array[i]);
             pt = pt->next;
         }
 
@@ -241,14 +235,13 @@ void deletePreviousHash(HASHTABLE *ht){
 
             //Change our head
             l->head = temp->next;
-            //Free the previous head
+
             free(temp);
             //Temp is equal to new head
             temp = l->head;
 
         }
 
-        //Free current list
         free(l);
 
     }
@@ -256,17 +249,6 @@ void deletePreviousHash(HASHTABLE *ht){
     //Free the hash table pointers
     free(ht->slot);
 
-    //Free the hash table
     free(ht);
 
 }
-
-//Used for debugging the HashTable
-//#ifdef DEBUG
-//int main(){
-//
-//
-//
-//    return 0;
-//}
-//#endif

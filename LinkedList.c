@@ -39,12 +39,9 @@ void insert_list(LIST *l,char *data){
  * @param new_data the data to be added
  */
 void insert(NODE** head_ref, char new_data[]){
-    //NODE* new_node = (NODE*)malloc(sizeof(NODE));
 
     //Allocate the appropriate memory
     NODE* new_node = (NODE*)malloc(sizeof(*new_node) + strlen(new_data) + 1);
-
-//    new_node->data = malloc(sizeof(char)*strlen(new_data)+1);
 
     if(new_node == NULL){
         printf("Unable to allocate memory");

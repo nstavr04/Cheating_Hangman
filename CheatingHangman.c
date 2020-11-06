@@ -117,7 +117,7 @@ int CheckLetterCaps(char *arg, char *letter) {
     char letterSample;
 
     //Get a letter from the word to see if its caps or not
-    fscanf(fp, "%c", &letterSample);
+    fscanf(fp, " %c", &letterSample);
 
     fclose(fp);
 
@@ -210,9 +210,9 @@ int wordCompleted(char secretWord[]){
 
 /**
  * The main function that does the function calling
- * @param argc
- * @param argv
- * @return
+ * @param argc number of parameters
+ * @param argv the parameters
+ * @return 0
  */
 int main(int argc, char *argv[]) {
 
@@ -342,6 +342,11 @@ int main(int argc, char *argv[]) {
             deletePreviousHash(ht);
 
         }
+
+        for(int i=0;i<arraySize;i++){
+            printf("%s\n",array[i]);
+        }
+
 
         //Conditions to end the game
 
