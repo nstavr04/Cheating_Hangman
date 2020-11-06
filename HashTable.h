@@ -30,6 +30,10 @@ void hashPlace(HASHTABLE *ht,int index,char word[]);
 /**
  * The main hash function that hashes the data and calls the hashPlace
  * function to put the data in the correct Hash Table slot
+ *
+ * @param ht the hash table
+ * @param word the current word
+ * @param userLetter the current guess letter
  */
 void hashFunction(HASHTABLE *ht,char word[],char userLetter);
 
@@ -40,26 +44,44 @@ void hashFunction(HASHTABLE *ht,char word[],char userLetter);
   * @param wordLength the word length
   * @param userLetter the user current letter
   */
-void ReadFile(char *arg,int wordLength,char userLetter);
+HASHTABLE * ReadFile(char *arg,int wordLength,char userLetter);
 
 /**
-  * Function that reads the data from the array and stores them
-  * in the hash table in the appropriate slots
-  * @param array the array with the words
-  * @param wordLength the word length
-  * @param userLetter the user current letter
-  */
-void ReadFromArray(char **array,int wordLength,char userLetter,int arraySize);
+ * Function that reads the data from the array and stores them
+ * in the hash table in the appropriate slots
+ * @param array the array with the words
+ * @param wordLength the word length
+ * @param userLetter the user current letter
+ * @param arraySize the array size which is equal to the max list size
+ * @return a pointer to the filled hash table
+ */
+HASHTABLE *ReadFromArray(char **array,int wordLength,char userLetter,int arraySize);
+
+/**
+ * A function that finds the max list size from the hash table and also returns the list
+ *
+ * @param ht  the hash table
+ * @param wordLength the size of the largest list
+ * @param maxListSize the size of the largest list
+ * @param guessedLetter the guess letter
+ * @return a pointer to the largest list in the hash table
+ */
+LIST *findMaxList(HASHTABLE *ht,int wordLength,int *maxListSize,int *guessedLetter);
 
 /**
  * A function that saves the List that has the largest size into an array
  * to be used in the next hash table
+ *
+ * @param l a pointer to the largest list
+ * @param arraySize the array size
+ * @return a double pointer to a char array that includes the list elements
  */
-char ** saveListToArray(LIST *l,int wordLength,int arraySize);
+char ** saveListToArray(LIST *l,int arraySize);
 
 /**
  * A function that deletes the previous hash table fully from memory.
  * Firstly it frees the nodes then the lists and lastly the hash table
+ * @param ht the filled hash table to be deleted
  */
 void deletePreviousHash(HASHTABLE *ht);
 

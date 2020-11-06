@@ -52,10 +52,14 @@ void hashPlace(HASHTABLE *ht,int index,char word[]){
 
 }
 
-/**
- * The main hash function that hashes the data and calls the hashPlace
- * function to put the data in the correct Hash Table slot
- */
+ /**
+  * The main hash function that hashes the data and calls the hashPlace
+  * function to put the data in the correct Hash Table slot
+  *
+  * @param ht the hash table
+  * @param word the current word
+  * @param userLetter the current guess letter
+  */
 void hashFunction(HASHTABLE *ht,char word[],char userLetter){
 
     //We are hashing the word based on the user letter with a unique ID
@@ -79,8 +83,9 @@ void hashFunction(HASHTABLE *ht,char word[],char userLetter){
   * @param arg the text file parameter
   * @param wordLength the word length
   * @param userLetter the user current letter
+  * @return a pointer to the filled hash table
   */
-void ReadFile(char *arg,int wordLength,char userLetter){
+HASHTABLE *ReadFile(char *arg,int wordLength,char userLetter){
 
     //Creating the hash table
      HASHTABLE *ht = createHt(pow(2,wordLength));
@@ -96,6 +101,9 @@ void ReadFile(char *arg,int wordLength,char userLetter){
 
      char word[wordLength];
 
+     //Just overwriting the wordLength so we read it from the file
+     fscanf(fp,"%d",&wordLength);
+
      //While i have more lines to read
      while(fscanf(fp,"%s",word) == 1){
 
@@ -103,6 +111,8 @@ void ReadFile(char *arg,int wordLength,char userLetter){
          hashFunction(ht,word,userLetter);
 
      }
+
+     return ht;
 
 }
 
@@ -112,8 +122,10 @@ void ReadFile(char *arg,int wordLength,char userLetter){
   * @param array the array with the words
   * @param wordLength the word length
   * @param userLetter the user current letter
+  * @param arraySize the array size which is equal to the max list size
+  * @return a pointer to the filled hash table
   */
-void ReadFromArray(char **array,int wordLength,char userLetter,int arraySize){
+HASHTABLE *ReadFromArray(char **array,int wordLength,char userLetter,int arraySize){
 
     //Creatomg the hash table
     HASHTABLE *ht = createHt(pow(2,wordLength));
@@ -124,13 +136,69 @@ void ReadFromArray(char **array,int wordLength,char userLetter,int arraySize){
         hashFunction(ht,array[i],userLetter);
 
     }
+
+    return ht;
+}
+
+/**
+ * A function that finds the max list size from the hash table and also returns the list
+ *
+ * @param ht  the hash table
+ * @param wordLength the size of the largest list
+ * @param maxListSize the size of the largest list
+ * @param guessedLetter the guess letter
+ * @return a pointer to the largest list in the hash table
+ */
+LIST *findMaxList(HASHTABLE *ht,int wordLength,int *maxListSize,int *guessedLetter){
+
+    int max = 0;
+
+    HASHTABLE *p = ht;
+
+    //Point the list on the 1st list
+    LIST *l = p->slot[0];
+
+    //Iterates through the hash table
+    for(int i=0;i<pow(2,wordLength);i++){
+
+        //Checks if the size of the list is the largest
+        if(p->slot[i]->size >= max){
+            //Change the max size of list
+            max = p->slot[i]->size;
+            //Point l to that list
+            l = p->slot[i];
+        }
+
+        //Move to the next hash table slot
+        (p->slot)++;
+
+    }
+
+    //If the list is the first letter, it means the user didnt guess a letter
+    if(l == ht->slot[0]){
+        *guessedLetter = 0;
+    }
+    //Else it guessed the letter correctly
+    else{
+        *guessedLetter = 1;
+    }
+
+    //Change the max size to return it to the main
+    *maxListSize = max;
+
+    return l;
+
 }
 
 /**
  * A function that saves the List that has the largest size into an array
  * to be used in the next hash table
+ *
+ * @param l a pointer to the largest list
+ * @param arraySize the array size
+ * @return a double pointer to a char array that includes the list elements
  */
-char ** saveListToArray(LIST *l,int wordLength,int arraySize){
+char ** saveListToArray(LIST *l,int arraySize){
 
     //Create a pointer to go through the list
     NODE *pt = l->head;
@@ -142,7 +210,7 @@ char ** saveListToArray(LIST *l,int wordLength,int arraySize){
     char **array = calloc(l->size,sizeof(*array));
 
         //Go through the list and copy every element from list to the array
-        for(int i=0;i<l->size;i++){
+        for(int i=0;i<arraySize;i++){
             //Allocate the memory and return the pointer to that memory
             array[i] = strdup(pt->data);
             //Making sure the memory allocation happened and its not NULL
@@ -156,6 +224,7 @@ char ** saveListToArray(LIST *l,int wordLength,int arraySize){
 /**
  * A function that deletes the previous hash table fully from memory.
  * Firstly it frees the nodes then the lists and lastly the hash table
+ * @param ht the filled hash table to be deleted
  */
 void deletePreviousHash(HASHTABLE *ht){
 
