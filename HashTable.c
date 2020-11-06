@@ -17,17 +17,24 @@ HASHTABLE *createHt(int size){
         return NULL;
     }
 
+    //Allocating memory for the hash table
     ht = malloc(sizeof(HASHTABLE));
     if(ht == NULL){
         return NULL;
     }
 
-    ht->slot = (LIST **)malloc(size*sizeof(LIST));
+    //Allocating memory for the list pointers
+    ht->slot = (LIST **)malloc(size*sizeof(LIST *));
     if(ht->slot == NULL){
         return NULL;
     }
 
-    memset(ht->slot,0,size*sizeof(LIST));
+    //Allocating memory for lists
+    for(int i=0;i<size;i++){
+        ht->slot[i] = malloc(sizeof(*ht->slot[i]));
+    }
+
+    memset(ht->slot,0,size*sizeof(LIST *));
 
     ht->size = size;
 
@@ -45,10 +52,10 @@ HASHTABLE *createHt(int size){
 void hashPlace(HASHTABLE *ht,int index,char word[]){
 
     //Find the correct list in the hash table
-    LIST l = *ht->slot[index];
+    LIST *l = ht->slot[index];
 
     //Insert the word in the correct list
-    insert(&l.head,word);
+    insert(&l->head, word);
 
 }
 
