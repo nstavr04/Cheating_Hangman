@@ -252,9 +252,6 @@ int main(int argc, char *argv[]) {
     //list size is getting reinitialized to 0 every time
     int arraySize = 0;
 
-    //Making sure i read arraySize only the first time. The other times i will use maxListSize
-    int arraySizeOnce = 1;
-
     //Create the char array pointer
     char **array = NULL;
 
@@ -342,11 +339,6 @@ int main(int argc, char *argv[]) {
             deletePreviousHash(ht);
 
         }
-
-        for(int i=0;i<arraySize;i++){
-            printf("%s\n",array[i]);
-        }
-
 
         //Conditions to end the game
 
