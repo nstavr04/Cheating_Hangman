@@ -1,4 +1,5 @@
 #include "HashTable.h"
+#include <math.h>
 
 /**
  * If we have a positive size , we allocate the memory for a new hashtable.

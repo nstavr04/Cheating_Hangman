@@ -156,6 +156,7 @@ char CheckLetter() {
     //While the letter is not a valid letter
     while (!((letter >= 65 && letter <= 90) || (letter >= 97 && letter <= 122))) {
         printf("That is not a letter. Please give a letter: ");
+        fflush(stdout);
         scanf(" %c", &letter);
     }
 
@@ -257,6 +258,9 @@ int main(int argc, char *argv[]) {
 
     //Main loop of the hangman game
     while (gameEnd != 1) {
+
+        if(!firstRead)
+            printf("Words possible: %d\n",arraySize);
 
         printf("Progress: %s\n", wordProgress);
         printf("Number of Guesses: %d\n", totalGuesses);
