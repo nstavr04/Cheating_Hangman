@@ -164,15 +164,16 @@ char CheckLetter() {
 
     char letter;
 
-    //This one takes the character without taking the enter character
-    scanf(" %c", &letter);
+    char input[99];
 
-    //While the letter is not a valid letter
-    while (!((letter >= 'A' && letter <= 'Z') || (letter >= 'a' && letter <= 'z'))) {
-        printf("That is not a letter. Please give a letter: ");
-        fflush(stdin);
-        scanf(" %c", &letter);
-    }
+    scanf(" %s",input);
+
+    while(input[1] != 0 || !((input[0] >= 'A' && input[0] <= 'Z') || (input[0] >= 'a' && input[0] <= 'z'))){
+    printf("This is not a letter. Please give a letter: ");
+    scanf(" %s",input);
+}
+
+    letter = input[0];
 
     return letter;
 
