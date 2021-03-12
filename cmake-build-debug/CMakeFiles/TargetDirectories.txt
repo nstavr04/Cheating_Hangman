@@ -1,3 +1,0 @@
-C:/Users/nikol/Desktop/University/3rd Semester/EPL232 Programming Techniques/EPL232 HW/HW3/cmake-build-debug/CMakeFiles/HW3.dir
-C:/Users/nikol/Desktop/University/3rd Semester/EPL232 Programming Techniques/EPL232 HW/HW3/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/nikol/Desktop/University/3rd Semester/EPL232 Programming Techniques/EPL232 HW/HW3/cmake-build-debug/CMakeFiles/rebuild_cache.dir
